@@ -49,7 +49,10 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<action>' => 'post/<action>', //all pages have route: domain/page
+                //'<action>' => 'post/<action>', //all pages have route: domain/page
+                'post/<id:\d+>' => 'post/view',
+                'page/<page:\d+>' => 'post/index',
+                '/' => 'post/index',
             ],
         ],
     ],
