@@ -9,6 +9,7 @@
 namespace app\controllers;
 use app\models\Post;
 use yii\data\Pagination;
+use yii\web\HttpException;
 
 
 class PostController extends AppController
@@ -20,6 +21,12 @@ class PostController extends AppController
         $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
         //$this->debug($posts);
         return $this->render('index', compact('posts', 'pages'));
+    }
+    public function actionView() {
+        $id = \Yii::$app->request->get('id');
+        $post = Post::findOne($id);
+        if(empty($post)) throw new HttpException(404, 'Page not found');
+        return $this->render('view', compact('post'));
     }
     public function actionTest() {
         return $this->render('test');
