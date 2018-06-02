@@ -7,6 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'defaultRoute' => 'post/index', //default route to index
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -15,6 +16,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'adfdaddasdasddasdasad',
+            'baseUrl' => '', //base url -
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -43,14 +45,13 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<action>' => 'post/<action>', //all pages have route: domain/page
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
